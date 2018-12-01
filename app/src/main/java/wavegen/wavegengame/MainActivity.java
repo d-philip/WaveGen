@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         the1Wave();
         the2Wave();
         the3Wave();
-
-
-
     }
 
 
@@ -148,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         if(randomValue<=max && randomValue>=min)
             Rtext.setText("You did it!");
 
-        else Rtext.setText(randomValue+" " );
+        else Rtext.setText("Try Again" );
     }
 
 }
