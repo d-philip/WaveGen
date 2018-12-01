@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\debug\\x86_64 --target clean"
+  ],
+  "libraries": {
+    "native-lib-Debug-x86_64": {
+      "artifactName": "native-lib",
+      "buildCommand": "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\debug\\x86_64 --target native-lib",
+      "abi": "x86_64",
+      "output": "C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\build\\intermediates\\cmake\\debug\\obj\\x86_64\\libnative-lib.so"
+    }
+  }
+}
