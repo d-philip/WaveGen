@@ -1,18 +1,5 @@
 <resources>
-    <string name="app_name">WaveGen</string>
-    <string name="easy_button_label">Easy</string>
-    <string name="Instruction_Activity">Instruction </string>
-    <string name="Instruction_message">These are the instructions to the game.</string>
-    <string name="game_button">Game</string>
-    <string name="game_message">Button Works</string>
-    <string name="post_game_button">Post Game</string>
-    <string name="post_game_message">Post Game works</string>
-    <string name="MainMenu_button">Menu</string>
-    <string name="play_again_button">Play Again</string>
-    <string name="Game_Activity">Game </string>
-    <string name="PostGame_Activity">Post Game</string>
-    <string name="medium_level_button">Medium</string>
-    <string name="hard_button_label">Hard</string>
-    <string name="instructions_button_label">Instructions</string>
-
+    <string name="app_name">WaveGenGame</string>
+    <string name="title">Wave Gen</string>
+    <string name="play">play</string>
 </resources>
