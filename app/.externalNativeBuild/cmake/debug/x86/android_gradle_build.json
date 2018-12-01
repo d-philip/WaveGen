@@ -1,9 +1,9 @@
 
 {
-	"buildFiles" : [ "C:/Users/myles/Desktop/EC327/Lab10/WaveGen/app/CMakeLists.txt" ],
+	"buildFiles" : [ "/Users/layanbahaidarah/Downloads/WaveGengit/app/CMakeLists.txt" ],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
+		"/Users/layanbahaidarah/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/layanbahaidarah/Downloads/WaveGengit/app/.externalNativeBuild/cmake/debug/x86 --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -12,27 +12,27 @@
 		{
 			"abi" : "x86",
 			"artifactName" : "native-lib",
-			"buildCommand" : "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native-lib",
+			"buildCommand" : "/Users/layanbahaidarah/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/layanbahaidarah/Downloads/WaveGengit/app/.externalNativeBuild/cmake/debug/x86 --target native-lib",
 			"buildType" : "debug",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=i686-none-linux-android16 --gcc-toolchain=C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
-					"src" : "C:/Users/myles/Desktop/EC327/Lab10/WaveGen/app/src/main/cpp/native-lib.cpp",
-					"workingDirectory" : "C:/Users/myles/Desktop/EC327/Lab10/WaveGen/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android16 --gcc-toolchain=/Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/sources/android/support/include -isystem /Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/layanbahaidarah/Downloads/WaveGengit/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "/Users/layanbahaidarah/Downloads/WaveGengit/app/.externalNativeBuild/cmake/debug/x86"
 				}
 			],
-			"output" : "C:/Users/myles/Desktop/EC327/Lab10/WaveGen/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so",
-			"toolchain" : "405986017"
+			"output" : "/Users/layanbahaidarah/Downloads/WaveGengit/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so",
+			"toolchain" : "8943044172276744785"
 		}
 	},
 	"toolchains" : 
 	{
-		"405986017" : 
+		"8943044172276744785" : 
 		{
-			"cCompilerExecutable" : "C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-			"cppCompilerExecutable" : "C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+			"cCompilerExecutable" : "/Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/layanbahaidarah/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
 		}
 	}
 }

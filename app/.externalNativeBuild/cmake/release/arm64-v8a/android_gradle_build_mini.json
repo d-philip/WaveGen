@@ -1,16 +1,16 @@
 {
   "buildFiles": [
-    "C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\CMakeLists.txt"
+    "/Users/layanbahaidarah/Downloads/WaveGengit/app/CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target clean"
+    "/Users/layanbahaidarah/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/layanbahaidarah/Downloads/WaveGengit/app/.externalNativeBuild/cmake/release/arm64-v8a --target clean"
   ],
   "libraries": {
     "native-lib-Release-arm64-v8a": {
       "artifactName": "native-lib",
-      "buildCommand": "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target native-lib",
+      "buildCommand": "/Users/layanbahaidarah/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/layanbahaidarah/Downloads/WaveGengit/app/.externalNativeBuild/cmake/release/arm64-v8a --target native-lib",
       "abi": "arm64-v8a",
-      "output": "C:\\Users\\myles\\Desktop\\EC327\\Lab10\\WaveGen\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libnative-lib.so"
+      "output": "/Users/layanbahaidarah/Downloads/WaveGengit/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so"
     }
   }
 }

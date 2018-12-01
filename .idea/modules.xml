@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WaveGen.iml" filepath="$PROJECT_DIR$/WaveGen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/WaveGen.iml" filepath="$PROJECT_DIR$/.idea/WaveGen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WaveGengit.iml" filepath="$PROJECT_DIR$/WaveGengit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
