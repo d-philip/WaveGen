@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WaveGenGame</string>
+    <string name="title">Wave Gen</string>
+    <string name="play">play</string>
+</resources>
