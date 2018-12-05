@@ -16,11 +16,11 @@ import wavegen.wavegengame.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //creating the seek bars and the texts that would have their values
     private static SeekBar W1,W2;
     //private static TextView T1,T2;
     private static Integer V1 =0,V2=0 ;
     private static Double[] points1,points2,total,user;
+    public static  Integer color1,color2, color3 ,color4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void randomizing()
     {
+
         double Min=-1.0;
         double Max=1.0;
         points1=new Double[20];
@@ -146,6 +147,13 @@ public class MainActivity extends AppCompatActivity {
             points2[i]= (int) Math.round((Min + (r2*(Max - Min)))* 100) / (double) 100;
             total[i]=points1[i]+points2[i];
         }
+
+        Random rnd = new Random();
+        color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        color2= Color.argb(255, 100, rnd.nextInt(256), 100);
+        color3= Color.argb(255, rnd.nextInt(256), 100, rnd.nextInt(256));
+        color4= Color.argb(255, 100, rnd.nextInt(256), rnd.nextInt(256));
+
 
     }
     //
@@ -180,7 +188,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         series1.setThickness(10);
+        series1.setColor(color1);
         graph1.addSeries(series1);
+
 
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
         double p2;
@@ -191,7 +201,9 @@ public class MainActivity extends AppCompatActivity {
             series2.appendData(new DataPoint(i,p2),true,20);
         }
         series2.setThickness(10);
+        series2.setColor(color2);
         graph2.addSeries(series2);
+
 
         LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
         double t;
@@ -202,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             series3.appendData(new DataPoint(i ,t),true,20);
         }
         series3.setThickness(20);
-        series3.setColor(Color.RED);
+        series3.setColor(color3);
         graph3.addSeries(series3);
 
 
@@ -257,7 +269,9 @@ public class MainActivity extends AppCompatActivity {
             series1.appendData(new DataPoint(i,p),true,20);
         }
         series1.setThickness(10);
+        series1.setColor(color1);
         graph1.addSeries(series1);
+
 
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
 
@@ -267,6 +281,7 @@ public class MainActivity extends AppCompatActivity {
             series2.appendData(new DataPoint(i,p),true,20);
         }
         series2.setThickness(10);
+        series2.setColor(color2);
         graph2.addSeries(series2);
 
         LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>();
@@ -278,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
             series4.appendData(new DataPoint(i,p),true,20);
         }
         series4.setThickness(15);
+        series4.setColor(color4);
         graph4.addSeries(series4);
     }
 }
