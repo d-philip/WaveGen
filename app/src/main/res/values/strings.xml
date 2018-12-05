@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">WaveGenGame</string>
-    <string name="title">Wave Gen</string>
-    <string name="play">play</string>
+    <string name="app_name">WaveGen</string>
+    <string name="button_label_start">Start</string>
+    <string name="game_name">Game</string>
+    <string name="text_header">Button Works</string>
 </resources>
