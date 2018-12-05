@@ -28,10 +28,10 @@
         <activity
             android:name=".GameActivity"
             android:label="@string/Game_Activity"
-            android:parentActivityName=".InstructionActivity">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.twoactivities.InstructionActivity" />
+                android:value="com.example.android.twoactivities.MainActivity" />
         </activity>
         <activity
             android:name=".PostGame"

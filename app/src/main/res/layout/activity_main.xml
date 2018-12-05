@@ -12,6 +12,36 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="218dp"
-        android:onClick="launchInstructions"
-        android:text="@string/start_button_label" />
+        android:onClick="launchGameEasy"
+        android:text="@string/easy_button_label" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_start"
+        android:layout_centerHorizontal="true"
+        android:text="@string/medium_level_button"
+        android:onClick="launchGameMedium"
+        />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:text="@string/hard_button_label"
+        android:onClick="launchGameHard"/>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_start"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-218dp"
+        android:text="@string/instructions_button_label"
+        android:onClick="launchInstructions"/>
+
 </RelativeLayout>
