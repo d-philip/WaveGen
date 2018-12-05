@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     //creating the seek bars and the texts that would have their values
     private static SeekBar W1,W2;
-    private static TextView T1,T2;
+    //private static TextView T1,T2;
     private static Integer V1 =0,V2=0 ;
     private static Double[] points1,points2,total,user;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //testing how to make the first wave
     public void the1Wave() {
         W1 = findViewById(R.id.wave1Bar);
-        T1 = findViewById(R.id.wave1Text);
+        //T1 = findViewById(R.id.wave1Text);
 
 
         W1.setOnSeekBarChangeListener(
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         V1 = progress;
-                        T1.setText("W1 " + V1);
+                        //T1.setText("W1 " + V1);
                         userGraphs();
                         success();
 //                        playerOutput();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        T1.setText("W1 " + V1);
+                        //T1.setText("W1 " + V1);
 //                        playerOutput();
 
                     }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     //second wave
     public void the2Wave() {
         W2 = findViewById(R.id.wave2Bar);
-        T2 = findViewById(R.id.wave2Text);
+        //T2 = findViewById(R.id.wave2Text);
         W2.setOnSeekBarChangeListener(
 
                 new SeekBar.OnSeekBarChangeListener() {
@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                         V2= progress;
-                        T2.setText("W2 " + V2);
+                        //T2.setText("W2 " + V2);
                         userGraphs();
                         success();
-                        playerOutput();
+//                        playerOutput();
                     }
 
                     @Override
@@ -97,27 +97,27 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        T2.setText("W2 " + V2);
-                        playerOutput();
-
+                        //T2.setText("W2 " + V2);
+//                        playerOutput();
+//
                     }
                 }
         );
     }
 
 
-    public void playerOutput() {
-        TextView allWaves = findViewById(R.id.allWavesText);
-        allWaves.setText(V1 + " " + V2);
-    }
+    //    public void playerOutput() {
+//        TextView allWaves = findViewById(R.id.allWavesText);
+//        allWaves.setText(V1 + " " + V2);
+//    }
     public void success()
     {
         double max,min;
         int count=0;
         for (int i=0;i<20;i++)
         {
-            max = (points1[i] + points2[i]) + 2.0;
-            min = (points1[i] + points2[i]) - 2.0;
+            max = (points1[i] + points2[i]) + 1.5;
+            min = (points1[i] + points2[i]) - 1.5;
 
             if(user[i]<=max && user[i]>=min)
                 count++;
