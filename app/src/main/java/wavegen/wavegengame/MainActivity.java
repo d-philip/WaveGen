@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             series1.appendData(new DataPoint(i,p),true,20);
         }
 
+        series1.setThickness(10);
         graph1.addSeries(series1);
 
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             p2= points2[i];
             series2.appendData(new DataPoint(i,p2),true,20);
         }
-
+        series2.setThickness(10);
         graph2.addSeries(series2);
 
         LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
@@ -200,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             t= total[i];
             series3.appendData(new DataPoint(i ,t),true,20);
         }
-
+        series3.setThickness(20);
         graph3.addSeries(series3);
 
     }
@@ -253,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
             p= p1[i];
             series1.appendData(new DataPoint(i,p),true,20);
         }
-
+        series1.setThickness(10);
         graph1.addSeries(series1);
 
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
@@ -263,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
             p= p2[i];
             series2.appendData(new DataPoint(i,p),true,20);
         }
-
+        series2.setThickness(10);
         graph2.addSeries(series2);
 
         LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>();
@@ -275,9 +276,8 @@ public class MainActivity extends AppCompatActivity {
             p= user[i];
             series4.appendData(new DataPoint(i,p),true,20);
         }
-
+        series4.setThickness(15);
         graph4.addSeries(series4);
     }
-
 }
 
