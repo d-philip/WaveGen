@@ -3,21 +3,18 @@ package com.example.android.twoactivities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
     }
 
-
-    public void launchInstructions(View view) {
-        Intent intent = new Intent(this, InstructionActivity.class);
+    public void launchPostGame(View view) {
+        Intent intent = new Intent(this, PostGame.class);
         startActivity(intent);
     }
 }

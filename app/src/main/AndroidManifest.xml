@@ -17,12 +17,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game"
-            android:label = "@string/game_name"
-            android:parentActivityName = ".MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.android.twoactivities.MainActivity" />
+        <activity
+            android:name=".InstructionActivity"
+            android:label="@string/Instruction_Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.twoactivities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/Game_Activity"
+            android:parentActivityName=".InstructionActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.twoactivities.InstructionActivity" />
+        </activity>
+        <activity
+            android:name=".PostGame"
+            android:label = "@string/PostGame_Activity"
+            android:parentActivityName = ".GameActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.twoactivities.GameActivity" />
         </activity>
     </application>
 
