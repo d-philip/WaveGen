@@ -202,7 +202,9 @@ public class MainActivity extends AppCompatActivity {
             series3.appendData(new DataPoint(i ,t),true,20);
         }
         series3.setThickness(20);
+        series3.setColor(Color.RED);
         graph3.addSeries(series3);
+
 
     }
 
@@ -268,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
         graph2.addSeries(series2);
 
         LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>();
-        series4.setColor(Color.RED);
 
         for(int i = 0; i<user.length; i++)
         {
