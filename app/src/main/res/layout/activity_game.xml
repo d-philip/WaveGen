@@ -9,43 +9,51 @@
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphfinal"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/graphinput1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:layout_constraintVertical_weight="1.2" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphinput1"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:layout_marginTop="19dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="-9dp"
         app:layout_constraintBottom_toTopOf="@+id/graphinput2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graphfinal" />
+        app:layout_constraintTop_toBottomOf="@+id/graphfinal"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:layout_constraintVertical_weight="1" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphinput2"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/graphinput3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graphinput1" />
+        app:layout_constraintTop_toBottomOf="@+id/graphinput1"
+        app:layout_constraintVertical_weight="1" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphinput3"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graphinput2" />
+        app:layout_constraintTop_toBottomOf="@+id/graphinput2"
+        app:layout_constraintVertical_weight="1" />
 
 
 </android.support.constraint.ConstraintLayout>

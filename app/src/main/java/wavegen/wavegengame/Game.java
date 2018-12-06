@@ -15,11 +15,20 @@ import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Random;
+import java.util.logging.StreamHandler;
+
 import static com.jjoe64.graphview.GridLabelRenderer.GridStyle.NONE;
 
 public class Game extends AppCompatActivity implements View.OnTouchListener, GestureDetector.OnGestureListener{
 
     private static final String TAG = "Game";
+
+    private static final int SIN = 0;
+    private static final int SQR = 1;
+    private static final int SAW = 2;
+    private static final int TRI = 3;
+
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -32,21 +41,34 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 
     //variables
     private GestureDetector mGestureDetector;
+    private int type1 = SIN;
     private double pan1 = 0;
     private double panfinal1 = 0;
     private double stretch1 = 0;
+
+    private int type2 = SIN;
     private double pan2 = 0;
     private double panfinal2 = 0;
     private double stretch2 = 0;
+
+    private int type3 = SIN;
     private double pan3 = 0;
     private double panfinal3 = 0;
     private double stretch3 = 0;
+
+    private double percentoff = .1; // percent off the pan values can be off to win
+    private boolean finalcorrect = false;
 
     private LineGraphSeries<DataPoint> series1 = new LineGraphSeries<DataPoint>();
     private LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
     private LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
     private LineGraphSeries<DataPoint> seriesuserf = new LineGraphSeries<DataPoint>();
     private LineGraphSeries<DataPoint> seriesf = new LineGraphSeries<DataPoint>();
+
+    DataPoint circlecurve1[];
+    DataPoint circlecurve2[];
+    DataPoint circlecurve3[];
+    DataPoint circlecurvef[];
 
 
     @Override
@@ -101,35 +123,59 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         graphf.getViewport().setMinY(-1);
         graphf.getViewport().setMaxY(1);
 
+        Random generator = new Random();
 
+        type1 = generator.nextInt(3);
         pan1 = Math.random()* 2 * Math.PI;
         panfinal1 = Math.random()* 2 * Math.PI;
-        stretch1 = Math.random()* 24 + 1; //Num between 1 and 25
+        stretch1 = Math.random()* 9 + 1; //Num between 1 and 10
 
+        type2 = generator.nextInt(3);
         pan2 = Math.random()* 2 * Math.PI;
         panfinal2 = Math.random()* 2 * Math.PI;
-        stretch2 = Math.random()* 24 + 1; //Num between 1 and 25
+        stretch2 = Math.random()* 9 + 1; //Num between 1 and 10
 
+        type3 = generator.nextInt(3);
         pan3 = Math.random()* 2 * Math.PI;
         panfinal3 = Math.random()* 2 * Math.PI;
-        stretch3 = Math.random()* 24 + 1; //Num between 1 and 25
+        stretch3 = Math.random()* 9 + 1; //Num between 1 and 10
 
-        DataPoint wave1[] = getSinWavePts(pan1,stretch1);
-        DataPoint wave2[] = getSawWavePts(pan2,stretch2);
-        DataPoint wave3[] = getSqrWavePts(pan3, stretch3);
+        String typetag1 = "type1 = " + type1;
+        String typetag2 = "type2 = " + type2;
+        String typetag3 = "type3 = " + type3;
+
+        Log.d(TAG, typetag1);
+        Log.d(TAG, typetag2);
+        Log.d(TAG, typetag3);
+
+
+        DataPoint wave1[] = getSimpleWave(pan1,stretch1,type1);
+        DataPoint wave2[] = getSimpleWave(pan2,stretch2,type2);
+        DataPoint wave3[] = getSimpleWave(pan3,stretch3,type3);
         DataPoint waveuserf[] = getSumThreeWavePts(wave1,wave2,wave3);
 
-        DataPoint wavefinal1[] = getSinWavePts(panfinal1,stretch1);
-        DataPoint wavefinal2[] = getSawWavePts(panfinal2,stretch2);
-        DataPoint wavefinal3[] = getSqrWavePts(panfinal3, stretch3);
+        DataPoint wavefinal1[] = getSimpleWave(panfinal1,stretch1, type1);
+        DataPoint wavefinal2[] = getSimpleWave(panfinal2,stretch2, type2);
+        DataPoint wavefinal3[] = getSimpleWave(panfinal3,stretch3, type3);
         DataPoint wavef[] = getSumThreeWavePts(wavefinal1,wavefinal2,wavefinal3);
 
+        circlecurve1 = getCircleWavePts(7);
+        circlecurve2 = getCircleWavePts(8);
+        circlecurve3 = getCircleWavePts(9);
+        circlecurvef = getCircleWavePts(10);
 
-        series1.resetData(wave1);
-        series2.resetData(wave2);
-        series3.resetData(wave3);
-        seriesuserf.resetData(waveuserf);
-        seriesf.resetData(wavef);
+        DataPoint wave1c[] = getSumTwoWavePts(wave1, circlecurve1);
+        DataPoint wave2c[] = getSumTwoWavePts(wave2, circlecurve2);
+        DataPoint wave3c[] = getSumTwoWavePts(wave3, circlecurve3);
+        DataPoint waveuserfc[] = getSumTwoWavePts(waveuserf, circlecurvef);
+
+        DataPoint wavefc[] = getSumTwoWavePts(wavef, circlecurvef);
+
+        series1.resetData(wave1c);
+        series2.resetData(wave2c);
+        series3.resetData(wave3c);
+        seriesuserf.resetData(waveuserfc);
+        seriesf.resetData(wavefc);
 
 
         series1.setThickness(8);
@@ -150,7 +196,7 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         graph3.getGridLabelRenderer().setVerticalLabelsVisible(false);
         graph3.addSeries(series3);
 
-        seriesf.setThickness(8);
+        seriesuserf.setThickness(8);
         graphf.getGridLabelRenderer().setGridStyle(NONE);
         graphf.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         graphf.getGridLabelRenderer().setVerticalLabelsVisible(false);
@@ -159,23 +205,34 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 
     }
 
-    public DataPoint[] getRandSimpleWave(double pan, double stretch){
+    public DataPoint[] getSimpleWave(double pan, double stretch, int type){
         DataPoint Pts[] = new DataPoint[360];
-        int type = (int)(Math.random() * 4);
-
         switch (type){
-            case 0:
+            case SIN:
                 Pts = getSinWavePts(pan, stretch);
                 break;
-            case 1:
+            case SQR:
                 Pts = getSqrWavePts(pan, stretch);
                 break;
-            case 2:
-                Pts = getSawWavePts(pan, stretch);
-                break;
+            //case SAW:
+                //Pts = getSawWavePts(pan, stretch);
+                //break;
                 default:
                     Pts = getSinWavePts(pan,stretch);
         };
+        return Pts;
+    }
+
+    public DataPoint[] getSinWavePts(double pan, double stretch){
+        DataPoint Pts[] = new DataPoint[360];
+
+        double x = 0;
+        double y;
+        for(int i = 0; i < 360; i++){
+            y = Math.sin(stretch * x - pan);
+            Pts[i] = new DataPoint(x,y);
+            x = x + Math.PI/180;
+        }
 
         return Pts;
     }
@@ -186,26 +243,30 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         double x = 0;
         double y;
         for(int i = 0; i < 360; i++){
-            if((i + (pan*360))%(360/stretch)<180/stretch){
-                y = -1;
-            }
-            else{
+            if(Math.sin(stretch*x - pan)>=0) {
                 y = 1;
             }
-            Pts[i] = new DataPoint(x,y);
-            x = x + Math.PI/180;
+            else{
+                y = -1;
+            }
+            Pts[i] = new DataPoint(x, y);
+            x = x + Math.PI / 180;
         }
 
         return Pts;
     }
 
-    public DataPoint[] getSinWavePts(double pan, double stretch){
+    public DataPoint[] getTriWavePts(double pan, double stretch){
         DataPoint Pts[] = new DataPoint[360];
 
         double x = 0;
-        double y;
+        double y = -1;
         for(int i = 0; i < 360; i++){
-            y = Math.sin(stretch * x + (pan*360)/(2*Math.PI));
+            y += (x-pan)/Math.PI;
+            if(y >= 1){
+                y = -1;
+                x = x%(2*Math.PI);
+            }
             Pts[i] = new DataPoint(x,y);
             x = x + Math.PI/180;
         }
@@ -213,15 +274,57 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         return Pts;
     }
 
+
+    /*
     public DataPoint[] getSawWavePts(double pan, double stretch){
         DataPoint Pts[] = new DataPoint[360];
 
         double x = 0;
-        double y;
+        double y = (x-pan);
+        double pancount = pan%(2*Math.PI);
+        for(double j = 0; j < pan%(2*Math.PI); j+=Math.PI/180){
+            if(Math.sin(x - pan) > 0){
+                y += 1/(2*Math.PI);
+            }
+            else{
+                y -= 1/(2*Math.PI);
+            }
+            pancount -= Math.PI/180;
+            x = x + Math.PI/180;
+        }
+        if(Math.sin(x-pan) > 0){
+            y += pancount * 1/(2*Math.PI);
+        }
+        else{
+            y -= pancount * 1/(2*Math.PI);
+        }
+        x = 0;
         for(int i = 0; i < 360; i++){
-            y = stretch*(2*i/360)-1;
+            Pts[i] = new DataPoint(x,y);
+            if(Math.sin(x - pan) > 0){
+                y += 1/(2*Math.PI);
+            }
+            else{
+                y -= 1/(2*Math.PI);
+            }
             Pts[i] = new DataPoint(x,y);
             x = x + Math.PI/180;
+        }
+
+        return Pts;
+    }
+    */
+
+    public DataPoint[] getCircleWavePts(double radius){
+        DataPoint Pts[] = new DataPoint[360];
+
+        double x = 0;
+        double y;
+        double y1 = Math.sqrt(Math.pow(radius,2) - Math.pow(x - Math.PI,2));
+        for(int i = 0; i < 360; i++){
+            y = Math.sqrt(Math.pow(radius,2) - Math.pow(x - Math.PI,2)) - y1;
+            Pts[i] = new DataPoint(x, y);
+            x = x + Math.PI / 180;
         }
 
         return Pts;
@@ -303,6 +406,36 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 */
 
 
+    public boolean checkCorrectDataPoints(DataPoint wave1[], DataPoint wave2[]) {
+        for(int i = 0; i < 360; i++){
+            if(Math.abs(wave1[i].getY()-wave2[i].getY())/((wave1[i].getY()+wave2[i].getY())/2) > percentoff){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkCorrectPan(double pan, double panfinal){
+        Log.d(TAG, "Percent Off: " + Math.abs(pan%(2*Math.PI)-panfinal)/((pan%(2*Math.PI)+panfinal)/2));
+
+        double panmin = panfinal - panfinal * percentoff;
+        double panmax = panfinal + panfinal * percentoff;
+
+        if(pan >= 0){
+            if(panmin <= pan%(2*Math.PI) && pan%(2*Math.PI) <= panmax) {
+                return true;
+            }
+        }
+        else{
+            if(panmin <= pan%(2*Math.PI) && pan%(2*Math.PI) <= panmax) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent){
         if(view.getId() == R.id.graphinput1){
@@ -341,32 +474,54 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
         if(selectedView == graph1){
-            pan1 += distanceX / graph1.getWidth();
+            pan1 -= distanceX / graph1.getWidth() * stretch1 * 2 * Math.PI;
         }
         if(selectedView == graph2){
-            pan2 += distanceX / graph2.getWidth();
+            pan2 -= distanceX / graph2.getWidth() * stretch2 * 2 * Math.PI;
         }
         if(selectedView == graph3){
-            pan3 += distanceX / graph3.getWidth();
+            pan3 -= distanceX / graph3.getWidth() * stretch3 * 2 * Math.PI;
         }
 
         Log.d(TAG, "onScroll: called.");
 
 
-        String panLog = "pan1 = " + pan1;
+        String panLog = "panfinal1 = " + panfinal1;
+        Log.d(TAG, panLog);
+        panLog = "panfinal2 = " + panfinal2;
+        Log.d(TAG, panLog);
+        panLog = "panfinal3 = " + panfinal3;
         Log.d(TAG, panLog);
 
-        DataPoint wave1[] = getSinWavePts(pan1,stretch1);
-        DataPoint wave2[] = getSqrWavePts(pan2,stretch2);
-        DataPoint wave3[] = getSqrWavePts(pan3,stretch3);
+        panLog = "pan1 = " + pan1;
+        Log.d(TAG, panLog);
+        panLog = "pan2 = " + pan2;
+        Log.d(TAG, panLog);
+        panLog = "pan3 = " + pan3;
+        Log.d(TAG, panLog);
+
+        DataPoint wave1[] = getSimpleWave(pan1,stretch1,type1);
+        DataPoint wave2[] = getSimpleWave(pan2,stretch2,type2);
+        DataPoint wave3[] = getSimpleWave(pan3,stretch3,type3);
         DataPoint waveuserf[] = getSumThreeWavePts(wave1,wave2,wave3);
 
-        series1.resetData(wave1);
-        series2.resetData(wave2);
-        series3.resetData(wave3);
-        seriesf.resetData(waveuserf);
+        DataPoint wave1c[] = getSumTwoWavePts(wave1, circlecurve1);
+        DataPoint wave2c[] = getSumTwoWavePts(wave2, circlecurve2);
+        DataPoint wave3c[] = getSumTwoWavePts(wave3, circlecurve3);
+        DataPoint waveuserfc[] = getSumTwoWavePts(waveuserf, circlecurvef);
+
+        series1.resetData(wave1c);
+        series2.resetData(wave2c);
+        series3.resetData(wave3c);
+        seriesuserf.resetData(waveuserfc);
 
         Log.d(TAG, "completed transformation");
+
+
+
+        if(checkCorrectPan(pan1,panfinal1)&&checkCorrectPan(pan2,panfinal2)&&checkCorrectPan(pan3,panfinal3)){
+            Log.d(TAG, "You Win!");
+        }
 
         return false;
     }
