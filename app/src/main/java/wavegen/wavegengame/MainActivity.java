@@ -53,4 +53,27 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK){
         }
     }
+
+    public void launchGameHard(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("difficulty_button_press", "hard");
+        startActivity(intent);
+    }
+
+    public void launchGameMedium(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("difficulty_button_press", "medium");
+        startActivity(intent);
+    }
+
+    public void launchGameEasy(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("difficulty_button_press", "easy");
+        startActivity(intent);
+    }
+
+    public void launchInstructions(View view) {
+        Intent intent = new Intent(this, InstructionActivity.class);
+        startActivity(intent);
+    }
 }
