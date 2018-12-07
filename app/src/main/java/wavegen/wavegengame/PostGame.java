@@ -14,7 +14,7 @@ public class PostGame extends AppCompatActivity {
     }
 
     public void launchGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, Game.class);
         startActivity(intent);
     }
 
