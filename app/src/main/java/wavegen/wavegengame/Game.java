@@ -57,7 +57,7 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
     private double panfinal3 = 0;
     private double stretch3 = 0;
 
-    private double percentoff = .1; // percent off the pan values can be off to win
+    private double percentoff = .2; // percent off the pan values can be off to win
     private boolean finalcorrect = false;
 
     private LineGraphSeries<DataPoint> series1 = new LineGraphSeries<DataPoint>();
@@ -428,7 +428,7 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
             }
         }
         else{
-            if(panmin <= pan%(2*Math.PI) && pan%(2*Math.PI) <= panmax) {
+            if(panmin <= 2*Math.PI + pan%(2*Math.PI) && 2*Math.PI + pan%(2*Math.PI) <= panmax) {
                 return true;
             }
         }
