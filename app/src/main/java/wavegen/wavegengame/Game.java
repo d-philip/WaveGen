@@ -77,27 +77,6 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        //If easy button is pressed create easy graph
-        //If medium button is pressed create medium graph
-        //If hard button is pressed create hard graph
-
-        String difficulty = getIntent().getStringExtra("difficulty_button_press");
-
-        switch (difficulty)
-        {
-            case "easy":
-                Log.i(LOG_TAG, "Easy Button clicked!");
-                break;
-
-            case "medium":
-                Log.i(LOG_TAG, "Medium Button clicked!");
-                break;
-
-            case "hard":
-                Log.i(LOG_TAG, "Hard Button clicked!");
-                break;
-        }
-
         mGestureDetector = new GestureDetector(this,this);
 
         //First Input Graph
@@ -543,6 +522,9 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 
         if(checkCorrectPan(pan1,panfinal1)&&checkCorrectPan(pan2,panfinal2)&&checkCorrectPan(pan3,panfinal3)){
             Log.d(TAG, "You Win!");
+            //Thread.sleep(2000);
+            Intent winintent = new Intent(this, PostGame.class);
+            startActivity(winintent);
         }
 
         return false;

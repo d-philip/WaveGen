@@ -12,9 +12,4 @@ public class InstructionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction);
     }
-
-    public void launchGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
-    }
 }

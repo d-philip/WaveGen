@@ -22,58 +22,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        launchMenu();
-
-
-
+        setContentView(R.layout.activity_main);
     }
 
-    private void launchMenu(){
-        Intent menuActivity = new Intent(MainActivity.this, Menu.class);
 
-        startActivityForResult(menuActivity, 1);
-    }
-
-    private void launchGame(){
-        Intent gameActivity = new Intent(MainActivity.this, Game.class);
-
-        startActivityForResult(gameActivity, 2);
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            if(data.getBooleanExtra("button_pressed", false)){
-                launchGame();
-            }
-        }
-
-        //Needs to be implemented in Game
-        if (requestCode == 2 && resultCode == RESULT_OK){
-        }
-    }
-
-    public void launchGameHard(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("difficulty_button_press", "hard");
-        startActivity(intent);
-    }
-
-    public void launchGameMedium(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("difficulty_button_press", "medium");
-        startActivity(intent);
-    }
-
-    public void launchGameEasy(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("difficulty_button_press", "easy");
-        startActivity(intent);
-    }
-
-    public void launchInstructions(View view) {
-        Intent intent = new Intent(this, InstructionActivity.class);
+    public void launchGame(View view) {
+        Intent intent = new Intent(this, Game.class);
         startActivity(intent);
     }
 }

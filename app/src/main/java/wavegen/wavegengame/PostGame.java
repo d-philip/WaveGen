@@ -13,13 +13,13 @@ public class PostGame extends AppCompatActivity {
         setContentView(R.layout.activity_post_game);
     }
 
-    public void launchGame(View view) {
-        Intent intent = new Intent(this, Game.class);
+    public void launchPlayAgain(View view) {
+        Intent intent = new Intent (this, Game.class);
         startActivity(intent);
     }
 
-    public void launchMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void launchMainMenu(View view) {
+        Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
     }
 }
