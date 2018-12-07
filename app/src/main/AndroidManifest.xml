@@ -17,14 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InstructionActivity"
-            android:label="InstructionActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="wavegen.wavegengame.MainActivity" />
-        </activity>
-        <activity
             android:name=".Game"
             android:label="Game"
             android:parentActivityName=".MainActivity">
