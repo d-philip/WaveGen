@@ -1,15 +1,19 @@
 package wavegen.wavegengame;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
+import android.transition.Transition;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -75,6 +79,9 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setExitTransition(new Fade());
         setContentView(R.layout.activity_game);
 
         mGestureDetector = new GestureDetector(this,this);
@@ -542,7 +549,7 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 
     public void launchPostGame(View view) {
         Intent intent = new Intent(this, PostGame.class);
-        startActivity(intent);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }
 
