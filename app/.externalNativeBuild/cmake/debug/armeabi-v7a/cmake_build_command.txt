@@ -1,15 +1,15 @@
-Executable : /Users/rahulvarki/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+Executable : C:\Users\myles\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--H/Users/rahulvarki/Documents/wavegen/app
--B/Users/rahulvarki/Documents/wavegen/app/.externalNativeBuild/cmake/debug/armeabi-v7a
+-HC:\Users\myles\Desktop\EC327\Project\app
+-BC:\Users\myles\Desktop\EC327\Project\app\.externalNativeBuild\cmake\debug\armeabi-v7a
 -DANDROID_ABI=armeabi-v7a
 -DANDROID_PLATFORM=android-21
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/rahulvarki/Documents/wavegen/app/build/intermediates/cmake/debug/obj/armeabi-v7a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\myles\Desktop\EC327\Project\app\build\intermediates\cmake\debug\obj\armeabi-v7a
 -DCMAKE_BUILD_TYPE=Debug
--DANDROID_NDK=/Users/rahulvarki/Library/Android/sdk/ndk-bundle
+-DANDROID_NDK=C:\Users\myles\AppData\Local\Android\Sdk\ndk-bundle
 -DCMAKE_CXX_FLAGS=-fexceptions
--DCMAKE_TOOLCHAIN_FILE=/Users/rahulvarki/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
--DCMAKE_MAKE_PROGRAM=/Users/rahulvarki/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\myles\AppData\Local\Android\Sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\myles\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\ninja.exe
 -GAndroid Gradle - Ninja
 jvmArgs : 
 

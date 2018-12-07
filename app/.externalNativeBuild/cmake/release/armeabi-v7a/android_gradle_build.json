@@ -1,9 +1,9 @@
 
 {
-	"buildFiles" : [ "/Users/rahulvarki/Documents/wavegen/app/CMakeLists.txt" ],
+	"buildFiles" : [ "C:/Users/myles/Desktop/EC327/Project/app/CMakeLists.txt" ],
 	"cleanCommands" : 
 	[
-		"/Users/rahulvarki/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/rahulvarki/Documents/wavegen/app/.externalNativeBuild/cmake/release/armeabi-v7a --target clean"
+		"C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -12,27 +12,27 @@
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "native-lib",
-			"buildCommand" : "/Users/rahulvarki/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/rahulvarki/Documents/wavegen/app/.externalNativeBuild/cmake/release/armeabi-v7a --target native-lib",
+			"buildCommand" : "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native-lib",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/rahulvarki/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/rahulvarki/Library/Android/sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /Users/rahulvarki/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/rahulvarki/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/rahulvarki/Library/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "/Users/rahulvarki/Documents/wavegen/app/src/main/cpp/native-lib.cpp",
-					"workingDirectory" : "/Users/rahulvarki/Documents/wavegen/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi21 --gcc-toolchain=C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "C:/Users/myles/Desktop/EC327/Project/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "C:/Users/myles/Desktop/EC327/Project/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "/Users/rahulvarki/Documents/wavegen/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
-			"toolchain" : "13702218775342924340"
+			"output" : "C:/Users/myles/Desktop/EC327/Project/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
+			"toolchain" : "405986017"
 		}
 	},
 	"toolchains" : 
 	{
-		"13702218775342924340" : 
+		"405986017" : 
 		{
-			"cCompilerExecutable" : "/Users/rahulvarki/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
-			"cppCompilerExecutable" : "/Users/rahulvarki/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+			"cCompilerExecutable" : "C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/myles/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
 		}
 	}
 }
