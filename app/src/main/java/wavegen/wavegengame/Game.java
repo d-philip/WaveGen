@@ -155,39 +155,43 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         Log.d(TAG, typetag3);
 
 
+        //Get data points for waves based on pans, stretches, and types, and then sum them to get the user's final/combined wave
         DataPoint wave1[] = getSimpleWave(pan1,stretch1,type1);
         DataPoint wave2[] = getSimpleWave(pan2,stretch2,type2);
         DataPoint wave3[] = getSimpleWave(pan3,stretch3,type3);
         DataPoint waveuserf[] = getSumThreeWavePts(wave1,wave2,wave3);
 
+        //Get data points for final waves to then make the goal wave based on them
         DataPoint wavefinal1[] = getSimpleWave(panfinal1,stretch1, type1);
         DataPoint wavefinal2[] = getSimpleWave(panfinal2,stretch2, type2);
         DataPoint wavefinal3[] = getSimpleWave(panfinal3,stretch3, type3);
         DataPoint wavef[] = getSumThreeWavePts(wavefinal1,wavefinal2,wavefinal3);
 
-        circlecurve1 = getCircleWavePts(7);
-        circlecurve2 = getCircleWavePts(8);
-        circlecurve3 = getCircleWavePts(9);
-        circlecurvef = getCircleWavePts(10);
-
+        //Get data points for the waves that will curve the waves, and then combine them with each wave to curve them
+        circlecurve1 = getCircleWavePts(6);
+        circlecurve2 = getCircleWavePts(7);
+        circlecurve3 = getCircleWavePts(8);
+        circlecurvef = getCircleWavePts(9);
         DataPoint wave1c[] = getSumTwoWavePts(wave1, circlecurve1);
         DataPoint wave2c[] = getSumTwoWavePts(wave2, circlecurve2);
         DataPoint wave3c[] = getSumTwoWavePts(wave3, circlecurve3);
         DataPoint waveuserfc[] = getSumTwoWavePts(waveuserf, circlecurvef);
-
         DataPoint wavefc[] = getSumTwoWavePts(wavef, circlecurvef);
 
+        //Set the graph's series to the waves
         series1.resetData(wave1c);
         series2.resetData(wave2c);
         series3.resetData(wave3c);
         seriesuserf.resetData(waveuserfc);
         seriesf.resetData(wavefc);
 
+        //Set colors of graphs
         int graphcolor = argb(255, 227, 221, 182);
         int graphcolorf = argb(255, 0, 0, 0);
         int graphthickness = 8;
         int graphthicknessuser = 10;
 
+        //Change graph properties, and set which series go to which graphs
         series1.setThickness(graphthicknessuser);
         series1.setColor(graphcolor);
         graph1.getGridLabelRenderer().setGridStyle(NONE);
