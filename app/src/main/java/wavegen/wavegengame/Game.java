@@ -1,6 +1,7 @@
 package wavegen.wavegengame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
@@ -553,6 +554,20 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         if(checkCorrectPan(pan1,panfinal1)&&checkCorrectPan(pan2,panfinal2)&&checkCorrectPan(pan3,panfinal3)){ //Check win condition
             //Print message to log for debugging
             Log.d(TAG, "You Win!");
+
+            //Keeps track of score
+            int currentscore;
+            SharedPreferences score = getSharedPreferences("wavescompleted", 0);
+            if(score == null){
+                currentscore = 0;
+            }
+            else{
+                currentscore = score.getInt("wavescompleted", 0) + 1;
+            }
+            SharedPreferences.Editor editor = score.edit();
+            editor.putInt("wavescompleted", currentscore++);
+            editor.apply();
+
             //Thread.sleep(2000);
 
             //Switch to PostGame intent
