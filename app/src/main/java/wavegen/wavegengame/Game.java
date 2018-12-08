@@ -11,6 +11,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.transition.Fade;
+import android.view.Window;
+import android.app.ActivityOptions;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -61,6 +64,9 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
     private double stretch3 = 0;
 
     private double percentoff = .15; //amount a graph can be off to still be considered correct
+
+    //status of whether user is scrolling
+    private boolean hasWon = false;
 
     //5 series, will hold the datapoints for the graphs
     private LineGraphSeries<DataPoint> series1 = new LineGraphSeries<DataPoint>();
@@ -456,6 +462,7 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent){
+
         //Detect which graph was touched
         if(view.getId() == R.id.graphinput1){
             selectedView = graph1;
@@ -503,79 +510,86 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
-        if(selectedView == graph1){
-            pan1 -= distanceX / graph1.getWidth() * stretch1 * 2 * Math.PI;
-        }
-        if(selectedView == graph2){
-            pan2 -= distanceX / graph2.getWidth() * stretch2 * 2 * Math.PI;
-        }
-        if(selectedView == graph3){
-            pan3 -= distanceX / graph3.getWidth() * stretch3 * 2 * Math.PI;
-        }
-
-        //Print that OnScroll was called
-        Log.d(TAG, "onScroll: called.");
-
-        //Print goal pan and pan values to log for debugging
-        String panLog = "panfinal1 = " + panfinal1;
-        Log.d(TAG, panLog);
-        panLog = "panfinal2 = " + panfinal2;
-        Log.d(TAG, panLog);
-        panLog = "panfinal3 = " + panfinal3;
-        Log.d(TAG, panLog);
-
-        panLog = "pan1 = " + pan1;
-        Log.d(TAG, panLog);
-        panLog = "pan2 = " + pan2;
-        Log.d(TAG, panLog);
-        panLog = "pan3 = " + pan3;
-        Log.d(TAG, panLog);
-
-        //get new wave data points
-        DataPoint wave1[] = getSimpleWave(pan1,stretch1,type1);
-        DataPoint wave2[] = getSimpleWave(pan2,stretch2,type2);
-        DataPoint wave3[] = getSimpleWave(pan3,stretch3,type3);
-        DataPoint waveuserf[] = getSumThreeWavePts(wave1,wave2,wave3);
-
-        DataPoint wave1c[] = getSumTwoWavePts(wave1, circlecurve1);
-        DataPoint wave2c[] = getSumTwoWavePts(wave2, circlecurve2);
-        DataPoint wave3c[] = getSumTwoWavePts(wave3, circlecurve3);
-        DataPoint waveuserfc[] = getSumTwoWavePts(waveuserf, circlecurvef);
-
-        //reset series with new data points
-        series1.resetData(wave1c);
-        series2.resetData(wave2c);
-        series3.resetData(wave3c);
-        seriesuserf.resetData(waveuserfc);
-
-        //Print message to log if code above ran successfully for debugging
-        Log.d(TAG, "completed transformation");
-
-        if(checkCorrectPan(pan1,panfinal1)&&checkCorrectPan(pan2,panfinal2)&&checkCorrectPan(pan3,panfinal3)){ //Check win condition
-            //Print message to log for debugging
-            Log.d(TAG, "You Win!");
-
-            //Keeps track of score
-            int currentscore;
-            SharedPreferences score = getSharedPreferences("wavescompleted", 0);
-            if(score == null){
-                currentscore = 0;
+        if(!hasWon) {
+            if (selectedView == graph1) {
+                pan1 -= distanceX / graph1.getWidth() * stretch1 * 2 * Math.PI;
             }
-            else{
-                currentscore = score.getInt("wavescompleted", 0) + 1;
+            if (selectedView == graph2) {
+                pan2 -= distanceX / graph2.getWidth() * stretch2 * 2 * Math.PI;
             }
-            SharedPreferences.Editor editor = score.edit();
-            editor.putInt("wavescompleted", currentscore++);
-            editor.apply();
+            if (selectedView == graph3) {
+                pan3 -= distanceX / graph3.getWidth() * stretch3 * 2 * Math.PI;
+            }
 
-            //Thread.sleep(2000);
+            //Print that OnScroll was called
+            Log.d(TAG, "onScroll: called.");
 
-            //Switch to PostGame intent
-            Intent winintent = new Intent(this, PostGame.class);
-            startActivity(winintent);
+            //Print goal pan and pan values to log for debugging
+            String panLog = "panfinal1 = " + panfinal1;
+            Log.d(TAG, panLog);
+            panLog = "panfinal2 = " + panfinal2;
+            Log.d(TAG, panLog);
+            panLog = "panfinal3 = " + panfinal3;
+            Log.d(TAG, panLog);
+
+            panLog = "pan1 = " + pan1;
+            Log.d(TAG, panLog);
+            panLog = "pan2 = " + pan2;
+            Log.d(TAG, panLog);
+            panLog = "pan3 = " + pan3;
+            Log.d(TAG, panLog);
+
+            //get new wave data points
+            DataPoint wave1[] = getSimpleWave(pan1, stretch1, type1);
+            DataPoint wave2[] = getSimpleWave(pan2, stretch2, type2);
+            DataPoint wave3[] = getSimpleWave(pan3, stretch3, type3);
+            DataPoint waveuserf[] = getSumThreeWavePts(wave1, wave2, wave3);
+
+            DataPoint wave1c[] = getSumTwoWavePts(wave1, circlecurve1);
+            DataPoint wave2c[] = getSumTwoWavePts(wave2, circlecurve2);
+            DataPoint wave3c[] = getSumTwoWavePts(wave3, circlecurve3);
+            DataPoint waveuserfc[] = getSumTwoWavePts(waveuserf, circlecurvef);
+
+            //reset series with new data points
+            series1.resetData(wave1c);
+            series2.resetData(wave2c);
+            series3.resetData(wave3c);
+            seriesuserf.resetData(waveuserfc);
+
+            //Print message to log if code above ran successfully for debugging
+            Log.d(TAG, "completed transformation");
+
+
+            if (checkCorrectPan(pan1, panfinal1) && checkCorrectPan(pan2, panfinal2) && checkCorrectPan(pan3, panfinal3)) { //Check win condition
+                //Print message to log for debugging
+                Log.d(TAG, "You Win!");
+
+                hasWon = true;
+                trackScore();
+                //Thread.sleep(2000);
+
+                //Switch to PostGame intent
+                launchPostGame();
+                Intent winintent = new Intent(this, PostGame.class);
+                startActivity(winintent);
+            }
         }
-
         return false;
+    }
+
+    public void trackScore(){
+        //Keeps track of score
+        int currentscore;
+        SharedPreferences score = getSharedPreferences("wavescompleted", 0);
+        if(score == null){
+            currentscore = 0;
+        }
+        else{
+            currentscore = score.getInt("wavescompleted", 0) + 1;
+        }
+        SharedPreferences.Editor editor = score.edit();
+        editor.putInt("wavescompleted", currentscore++);
+        editor.apply();
     }
 
     @Override
@@ -588,9 +602,17 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         return false;
     }
 
-    public void launchPostGame(View view) {
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    }
+
+    public void launchPostGame() {
         Intent intent = new Intent(this, PostGame.class);
         startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }
 }
 

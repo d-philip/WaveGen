@@ -1,16 +1,16 @@
 {
   "buildFiles": [
-    "C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\CMakeLists.txt"
+    "C:\\Users\\Zumelo\\AndroidStudioProjects\\WaveGenGit\\app\\CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target clean"
+    "C:\\Users\\Zumelo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\Zumelo\\AndroidStudioProjects\\WaveGenGit\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target clean"
   ],
   "libraries": {
     "native-lib-Release-x86_64": {
       "artifactName": "native-lib",
-      "buildCommand": "C:\\Users\\myles\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target native-lib",
+      "buildCommand": "C:\\Users\\Zumelo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\Zumelo\\AndroidStudioProjects\\WaveGenGit\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target native-lib",
       "abi": "x86_64",
-      "output": "C:\\Users\\myles\\Desktop\\EC327\\Project\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libnative-lib.so"
+      "output": "C:\\Users\\Zumelo\\AndroidStudioProjects\\WaveGenGit\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libnative-lib.so"
     }
   }
 }
