@@ -22,7 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/wavegennodisk" />
+        app:srcCompat="@drawable/wavegennodisk"
+        android:contentDescription="@string/todo" />
 
     <Button
         android:id="@+id/button"
@@ -34,7 +35,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="launchGame"
-        android:text="Start"
+        android:text="@string/start"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/recordview"
@@ -43,5 +44,9 @@
         app:layout_constraintTop_toTopOf="@+id/recordview"
         app:layout_constraintVertical_bias="0.706" />
 
+    <view class="wavegen.wavegengame.RecordLines"
+        android:id="@+id/recordlines"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>

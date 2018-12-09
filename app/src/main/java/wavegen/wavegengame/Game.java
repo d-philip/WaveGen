@@ -2,27 +2,16 @@ package wavegen.wavegengame;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import android.transition.Fade;
-import android.view.Window;
-import android.app.ActivityOptions;
-
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.Random;
-import java.util.logging.StreamHandler;
-
 import static android.graphics.Color.argb;
 import static com.jjoe64.graphview.GridLabelRenderer.GridStyle.NONE;
 
@@ -297,47 +286,6 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         return Pts;
     }
 
-
-    /*
-    public DataPoint[] getSawWavePts(double pan, double stretch){
-        DataPoint Pts[] = new DataPoint[360];
-
-        double x = 0;
-        double y = (x-pan);
-        double pancount = pan%(2*Math.PI);
-        for(double j = 0; j < pan%(2*Math.PI); j+=Math.PI/180){
-            if(Math.sin(x - pan) > 0){
-                y += 1/(2*Math.PI);
-            }
-            else{
-                y -= 1/(2*Math.PI);
-            }
-            pancount -= Math.PI/180;
-            x = x + Math.PI/180;
-        }
-        if(Math.sin(x-pan) > 0){
-            y += pancount * 1/(2*Math.PI);
-        }
-        else{
-            y -= pancount * 1/(2*Math.PI);
-        }
-        x = 0;
-        for(int i = 0; i < 360; i++){
-            Pts[i] = new DataPoint(x,y);
-            if(Math.sin(x - pan) > 0){
-                y += 1/(2*Math.PI);
-            }
-            else{
-                y -= 1/(2*Math.PI);
-            }
-            Pts[i] = new DataPoint(x,y);
-            x = x + Math.PI/180;
-        }
-
-        return Pts;
-    }
-    */
-
     public DataPoint[] getCircleWavePts(double radius){ //Returns a set of datapoints for a circle graph with radius r shifted for the domain and range of the graphs
         DataPoint Pts[] = new DataPoint[360];
 
@@ -381,63 +329,6 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         return Pts;
     }
 
-    /*
-    public DataPoint[] initRandomizedPts()
-    {
-        DataPoint[] Pts = new DataPoint[360];
-
-        double Min=-1.0;
-        double Max=1.0;
-        double y = Math.random()*2-1;
-        double x = 0;
-        double prev = 0;
-        double constraint = .01;
-
-        Pts[0] = new DataPoint(x,y);
-        x = x + Math.PI/180;
-        for(int i=1; i<180;i++)
-        {
-            y = prev + Math.random()*2*constraint-constraint;
-            prev = y;
-            Pts[i] = new DataPoint(x,y);
-            x = x + Math.PI/180;
-        }
-        for(int i=180; i<360;i++)
-        {
-            Pts[i]  = new DataPoint(Pts[180-i].getX(),Pts[180-i].getY());
-            x = x + Math.PI/180;
-        }
-
-        return Pts;
-    }
-
-    public DataPoint[] getRandomizedWavePts(LineGraphSeries<DataPoint> series){
-        DataPoint Pts[] = new DataPoint[360];
-
-        + pan3
-
-        double x = 0;
-        double y;
-        for(int i = 0; i < 360; i++){
-            y = (wave1[i].getY() + wave2[i].getY())/2;
-            Pts[i] = new DataPoint(x,y);
-            x = x + Math.PI/180;
-        }
-
-        return Pts;
-    }
-*/
-
-/*
-    public boolean checkCorrectDataPoints(DataPoint wave1[], DataPoint wave2[]) { //
-        for(int i = 0; i < 360; i++){
-            if(Math.abs(wave1[i].getY()-wave2[i].getY())/((wave1[i].getY()+wave2[i].getY())/2) > percentoff){
-                return false;
-            }
-        }
-        return true;
-    }
-*/
 
     public boolean checkCorrectPan(double pan, double panfinal){ //Checks if the pan is close enough to panfinal
         Log.d(TAG, "Percent Off: " + Math.abs(pan%(2*Math.PI)-panfinal)/((pan%(2*Math.PI)+panfinal)/2));
@@ -473,17 +364,6 @@ public class Game extends AppCompatActivity implements View.OnTouchListener, Ges
         if(view.getId() == R.id.graphinput3){
             selectedView = graph3;
         }
-
-/*
-        if (motionEvent.getAction() == android.view.MotionEvent.ACTION_UP) {
-            if(checkCorrectPan(pan1,panfinal1)&&checkCorrectPan(pan2,panfinal2)&&checkCorrectPan(pan3,panfinal3)){
-                Log.d(TAG, "You Win!");
-                //Thread.sleep(2000);
-                Intent winintent = new Intent(this, PostGame.class);
-                startActivity(winintent);
-            }
-        }
-*/
 
         mGestureDetector.onTouchEvent(motionEvent); //send motionEvent to gesture detector
         return true;
