@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.transition.Fade;
-import android.view.Window;
-import android.app.ActivityOptions;
 
 
 public class PostGame extends AppCompatActivity {
@@ -18,6 +15,7 @@ public class PostGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_game);
 
+        //retrieve score form shared preferences and set the text of TextView scoreview
         SharedPreferences score = getSharedPreferences("wavescompleted", 0);
         int wavescompleted = score.getInt("wavescompleted", 0);
 

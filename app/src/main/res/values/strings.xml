@@ -2,4 +2,10 @@
     <string name="app_name">WaveGenGame</string>
     <string name="title">Wave Gen</string>
     <string name="play">Play</string>
+    <string name="wave_completed">WAVE COMPLETED</string>
+    <string name="total_waves">Total Waves:</string>
+    <string name="play_again">Play Again</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="start">Start</string>
+    <string name="todo">TODO</string>
 </resources>

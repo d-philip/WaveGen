@@ -1,15 +1,14 @@
 package wavegen.wavegengame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.graphics.Canvas;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.transition.Fade;
-import android.view.Window;
-import android.app.ActivityOptions;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,10 +23,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //get wavescompleted, send it to the recordlines view, and draw the view
+        SharedPreferences score = getSharedPreferences("wavescompleted", 0);
+        int wavescompleted = score.getInt("wavescompleted", 0);
+        Canvas canvas = new Canvas();
+        RecordLines recordlines = findViewById(R.id.recordlines);
+        recordlines.setWavesCompleted(wavescompleted);
+
+        //Animate Menu
         ImageView record = findViewById(R.id.recordview);
         Animation rotate = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
         record.startAnimation(rotate);
-
     }
 
     @Override
